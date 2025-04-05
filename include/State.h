@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <Sprite.h>
 
 class State{
     private:
@@ -8,6 +9,7 @@ class State{
     public:
         State();
         bool QuitRequested();
+        void LoadAssets();
         void Update(float dt);
         void Render();
 
