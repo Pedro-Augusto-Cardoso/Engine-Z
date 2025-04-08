@@ -1,10 +1,10 @@
 #include <bits/stdc++.h>
-#include <Sprite.h>
+#include <Music.h>
 
 class State{
     private:
         Sprite bg;
-        // Music music;
+        Music music;
         bool quitRequested;
     public:
         State();

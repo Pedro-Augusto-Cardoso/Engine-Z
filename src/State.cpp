@@ -8,6 +8,7 @@ State::State(){
 void State::Update(float dt){
     if(SDL_QuitRequested()){
         this->quitRequested = true;
+        std::cout << "Saindo." << std::endl; 
     }
 }
 
@@ -22,3 +23,4 @@ void State::Render(){
 bool State::QuitRequested(){
     return quitRequested;
 }
+

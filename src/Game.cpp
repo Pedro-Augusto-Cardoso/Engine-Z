@@ -6,43 +6,55 @@ Game& Game::GetInstance(){
     if(instance == nullptr){
         std::cout << "Instanciando." << std::endl;
         new Game(TITLE, WIDTH, HEIGHT);
-    } else {
-        std::cout << "Jogo já instanciado." << std::endl;
+    // } else {
+        // std::cout << "Jogo já instanciado." << std::endl;
     }
     return *instance;
     
 }
 
 Game::Game(std::string title, int width, int height){
-    if(instance == nullptr){
-        instance=this;
+    instance=this;
 
-        int init_SDL = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER);
-        if(init_SDL){
-            std::cout << "Erro inicializando SDL." << std::endl;
-            std::cout << SDL_GetError() << std::endl;
-        }
+    int init_SDL = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER);
+    if(init_SDL != 0){
+        std::cout << "Erro inicializando SDL." << std::endl;
+        std::cout << SDL_GetError() << std::endl;
+    }
 
-        int init_IMG = IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG | IMG_INIT_TIF);
-        if(init_IMG == 0){
-            std::cout << "Erro inicializando imagem." << std::endl;
-            std::cout << SDL_GetError() << std::endl;
-        }
+    int init_IMG = IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG | IMG_INIT_TIF);
+    if(init_IMG == 0){
+        std::cout << "Erro inicializando imagem." << std::endl;
+        std::cout << SDL_GetError() << std::endl;
+    }
 
-        int OpenAudio_Mix = Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024);
-        if(OpenAudio_Mix){
-            std::cout << "Erro inicializando audio." << std::endl;
-            std::cout << SDL_GetError() << std::endl;
-        }
+    int OpenAudio_Mix = Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024);
+    if(OpenAudio_Mix){
+        std::cout << "Erro inicializando audio." << std::endl;
+        std::cout << SDL_GetError() << std::endl;
+    }
 
-        char tab2[1024];
-        strcpy(tab2, title.c_str());
+    char tab2[1024];
+    strcpy(tab2, title.c_str());
 
-        this->window = SDL_CreateWindow(tab2, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, 0);
-        this->renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-        this->state = new State();
+    std::cout << tab2 << std::endl;
+
+    this->window = SDL_CreateWindow(tab2, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, 0);
+
+    if(window == nullptr){
+        std::cout << "Erro inicializando window." << std::endl;
+        std::cout << SDL_GetError() << std::endl;
+    }
+
+    this->renderer = SDL_CreateRenderer(this->window, -1, SDL_RENDERER_ACCELERATED);
+    this->state = new State();
+
+    if(renderer == nullptr){
+        std::cout << "Erro inicializando render." << std::endl;
+        std::cout << SDL_GetError() << std::endl;
     }
 }
+
 
 Game::~Game(){
     Mix_CloseAudio();
@@ -64,7 +76,7 @@ SDL_Renderer* Game::GetRenderer(){
 void Game::Run(){
     state->Update(0);
     state->Render();
-    SDL_RenderPresent(renderer);
+    SDL_RenderPresent(this->renderer);
     SDL_Delay(33);
 }
 
