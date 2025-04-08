@@ -1,6 +1,4 @@
-#include <SDL.h>
-#include <bits/stdc++.h>
-#include <State.h>
+#include <Music.h>
 
 class Game{
     private:
@@ -17,5 +15,5 @@ class Game{
         void Run();
         SDL_Renderer* GetRenderer();
         State& GetState();
-        Game& GetInstance();
+        static Game& GetInstance();
 };
