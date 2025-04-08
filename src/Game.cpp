@@ -5,11 +5,12 @@ Game* Game::instance = nullptr;
 Game& Game::GetInstance(){
     if(instance == nullptr){
         std::cout << "Instanciando." << std::endl;
-        new Game(TITLE, WIDTH, HEIGHT);
+        Game *inst= new Game(TITLE, WIDTH, HEIGHT);
+        return *inst;
     } else {
-        std::cout << "Jogo já instanciado." << std::endl;
+        // std::cout << "Jogo já instanciado." << std::endl;
+        return *instance;
     }
-    return *instance;
     
 }
 
@@ -38,9 +39,9 @@ Game::Game(std::string title, int width, int height){
         char tab2[1024];
         strcpy(tab2, title.c_str());
 
-        this->window = SDL_CreateWindow(tab2, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, 0);
-        this->renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-        this->state = new State();
+        window = SDL_CreateWindow(tab2, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, 0);
+        renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE | SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_TARGETTEXTURE);
+
     }
 }
 

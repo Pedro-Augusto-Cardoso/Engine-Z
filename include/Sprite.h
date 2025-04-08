@@ -3,11 +3,6 @@
 #include <SDL_image.h>
 #include <bits/stdc++.h>
 
-#define BACKGROUND_PATH "./res/Recursos/img/Background.png"
-#define TITLE "Title"
-#define WIDTH 1200
-#define HEIGHT 900
-
 class Sprite{
     private:
         SDL_Texture* texture;

@@ -1,5 +1,9 @@
 #include <Music.h>
 
+#define TITLE "Title"
+#define WIDTH 1200
+#define HEIGHT 900
+
 class Game{
     private:
         std::string title;

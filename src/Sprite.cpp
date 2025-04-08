@@ -20,7 +20,8 @@ void Sprite::Open(std::string file){
 
     char tab2[1024];
     strcpy(tab2, file.c_str());
-    texture = IMG_LoadTexture(Game::GetInstance().GetRenderer(), tab2);
+    Game g = Game::GetInstance();
+    texture = IMG_LoadTexture(g.GetRenderer(), tab2);
 
     if(texture == nullptr){
         std::cout << "Erro carregando imagem." << std::endl;
@@ -39,7 +40,7 @@ void Sprite::SetClip(int x, int y, int w, int h){
 
 void Sprite::Render(int x, int y){
     Game g = Game::GetInstance();
-    SDL_RenderCopy(Game::GetInstance().GetRenderer(), texture, &clipRect, &clipRect);
+    SDL_RenderCopy(g.GetRenderer(), texture, &clipRect, &clipRect);
 }
 
 int Sprite::GetHeight(){
