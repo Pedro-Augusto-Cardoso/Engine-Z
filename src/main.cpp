@@ -7,7 +7,7 @@ int main(int argc, char **argv){
     // game->Run();
     std::cout << SDL_GetError() << std::endl;
     // std::cout << << std::endl;
-    while(true){
+    while(!game.GetState().QuitRequested()){
         game.Run();
     }
     return 0;

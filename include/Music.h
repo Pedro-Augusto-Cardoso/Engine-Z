@@ -1,4 +1,4 @@
-#include <Sprite.h>
+#include <Rect.h>
 
 class Music{
     private:
