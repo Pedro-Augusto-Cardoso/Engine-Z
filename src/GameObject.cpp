@@ -35,3 +35,19 @@ void GameObject::RequestDelete(){
     isDead = true;
 }
 
+void GameObject::AddComponent(Component* cpt){
+    components.push_back(cpt);
+}
+
+void GameObject::RemoveComponent(Component* cpt){
+    components.erase(std::remove(components.begin(), components.end(), cpt), components.end());
+}
+
+Component * GameObject::GetComponent(std::string type){
+    for(int i = 0; i < components.size(); i++){
+        if(components[i]->Is(type)){
+            return components[i];
+        }
+    }
+    return nullptr;
+}
