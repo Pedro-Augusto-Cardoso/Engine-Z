@@ -1,6 +1,6 @@
 #include <Rect.h>
 
-Rect::Rect(float x = 0.0, float y = 0.0, float w = 0.0, float h = 0.0){
+Rect::Rect(float x, float y, float w, float h){
     this->x = x;
     this->y = y;
     this->w = w;

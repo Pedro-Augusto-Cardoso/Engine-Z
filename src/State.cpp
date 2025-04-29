@@ -1,5 +1,5 @@
 #include <State.h>
-#include <GameObject.h>
+// #include <GameObject.h>
 
 State::State(){
     bg.Open(BACKGROUND_PATH);

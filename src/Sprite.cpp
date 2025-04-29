@@ -4,7 +4,7 @@ Sprite::Sprite(){
     texture = nullptr;
 }
 
-Sprite::Sprite(std::string file, int frameCountW = 1, int frameCountH = 1){
+Sprite::Sprite(std::string file, int frameCountW, int frameCountH){
     texture = nullptr;
     this->frameCountH = frameCountH;
     this->frameCountW = frameCountW;

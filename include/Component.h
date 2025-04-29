@@ -1,4 +1,5 @@
-#include<bits/stdc++.h>
+// #include "Game.h"
+#include <bits/stdc++.h>
 
 class GameObject;
 
@@ -6,8 +7,9 @@ class Component{
     protected:
         GameObject& associated;
     public:
-        Component(GameObject& associated);
-        virtual void Update(float dt);
-        virtual void Render();
-        virtual bool Is(std::string type);
+        Component(GameObject& associated) : associated(associated) {};
+        virtual ~Component();
+        virtual void Update(float dt) = 0;
+        virtual void Render() = 0;
+        virtual bool Is(std::string type) = 0;
 };

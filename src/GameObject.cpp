@@ -1,5 +1,5 @@
 #include <GameObject.h>
-#include <Component.h>
+// #include <Component.h>
 
 GameObject::GameObject(){
     isDead = false;
