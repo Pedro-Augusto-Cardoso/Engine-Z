@@ -1,5 +1,5 @@
 #include <GameObject.h>
-// #include <Component.h>
+#include "Component.h"
 
 GameObject::GameObject(){
     isDead = false;
@@ -36,7 +36,7 @@ void GameObject::RequestDelete(){
 }
 
 void GameObject::AddComponent(Component* cpt){
-    components.push_back(cpt);
+    components.emplace_back(cpt);
 }
 
 void GameObject::RemoveComponent(Component* cpt){

@@ -1,4 +1,6 @@
-#include <Rect.h>
+// #include <Rect.h>
+#include <SDL_mixer.h>
+
 
 class Music{
     private:

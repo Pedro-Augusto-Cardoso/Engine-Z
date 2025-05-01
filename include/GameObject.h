@@ -1,7 +1,8 @@
-#include<Music.h>
-#include<Component.h>
+#include "Rect.h"
+// #include<Zombie.h>
+// #include "Component.h"
 
-// class Component;
+class Component;
 
 class GameObject{
     private:

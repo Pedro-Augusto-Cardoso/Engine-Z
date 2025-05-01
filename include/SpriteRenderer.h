@@ -1,8 +1,12 @@
 // #include <Component.h>
-#include <State.h>
+#include "Component.h"
+#include "Sprite.h"
+// #include "GameObject.h"
 // #include <Game.h>
 
-class SpriteRenderer : public Component{
+class GameObject;
+
+class SpriteRenderer : public virtual Component{
     private:
         Sprite sprite;
     public:

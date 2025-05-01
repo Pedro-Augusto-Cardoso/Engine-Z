@@ -1,8 +1,10 @@
 #include <SpriteRenderer.h>
-// #include "GameObject.h"
+#include "GameObject.h"
 
 SpriteRenderer::SpriteRenderer(GameObject& associated, std::string file, int frameCountW, int frameCountH) : Component(associated){
-    sprite = Sprite(file, frameCountH, frameCountW);
+    sprite.Open(file);
+    sprite.SetFrameCount(frameCountW, frameCountH);
+    sprite.SetFrame(0);
 }
 
 void SpriteRenderer::SetFrameCount(int frameCountW, int frameCountH){
@@ -21,7 +23,7 @@ void SpriteRenderer::Update(float dt){
 
 }
 
-void SpriteRenderer::Render(){
+void SpriteRenderer::Render(){  
     sprite.Render(associated.box.x, associated.box.y, associated.box.w, associated.box.h);
 }
 
